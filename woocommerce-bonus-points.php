@@ -42,7 +42,7 @@ class WBP {
 	public function __construct() {
 
 		if ( ! $this->has_woocommerce() ) {
-			//TODO: add admin notice about need activated woocommerce plugin
+			// TODO: add admin notice about need activated woocommerce plugin
 			return false;
 		}
 
