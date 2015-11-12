@@ -19,3 +19,12 @@ matrix:
   include:
   - php: 5.3
     env: WP_VERSION=latest WP_MULTISITE=1
+
+before_script:
+  - bash tests/bin/install.sh woocommerce_test root '' localhost $WP_VERSION
+  - bash tests/bin/travis.sh before
+
+script: phpunit -c phpunit.xml.dist
+
+after_script:
+  - bash tests/bin/travis.sh after
