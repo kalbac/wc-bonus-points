@@ -1,4 +1,4 @@
-# wc-bonus-points
+# wc-bonus-points https://travis-ci.org/kalbac/wc-bonus-points.svg?branch=master
 Plugin for Woocomerce. Adding bonus points system into customer profile. 
 
 ## HOW TO USE
