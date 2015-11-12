@@ -12,7 +12,6 @@ $ cd my-wordpress-folder/wp-content/plugins/
 $ git clone https://github.com/kalbac/wc-bonus-points.git
 ```
 
-
 ### 2. Activate plugin:
 
 For using plugin, you need to go to the admin panel and activate plugin "Bonus Points"
