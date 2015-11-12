@@ -36,5 +36,6 @@
         <exclude name="WordPress.Variables.GlobalVariables" />
         <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterOpenParenthesis" />
         <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeCloseParenthesis)" />
+        <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.BlankLineAfterEnd" />
     </rule>
 </ruleset>
