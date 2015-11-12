@@ -1,17 +1,27 @@
 <?php
 
 /*
-Plugin Name: Bonus Points
-Plugin URI: http://woodev.ru
-Description: Adding bonus points system into customer profile.
-Version: 1.0
-Author: Maksim Martirosov
-Author URI: http://martirosoff.ru
-Project: wc-bonus-points
-License: A "Slug" license name e.g. GPL2
+ * Plugin Name: Bonus Points
+ * Plugin URI: http://woodev.ru
+ * Description: Adding bonus points system into customer profile.
+ * Version: 1.0
+ * Author: Maksim Martirosov
+ * Author URI: http://martirosoff.ru
+ * Project: wc-bonus-points
+ * License: The MIT License (MIT)
+ *
+ * @package  Woocommerce Bonus Points
+ * @category Checkout
+ * @author   Maksim Martirosov
+ * @license  MIT
 */
 
-class WBP {
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die();
+}
+
+final class WoocommerceBonusPoints {
 
 	/**
 	 * A reference to an instance of this class.
@@ -28,7 +38,7 @@ class WBP {
 	protected $has_woocommerce = null;
 	/**
 	 * Main WooCommerce Bonus Points Instance
-	 * @return WBP
+	 * @return WoocommerceBonusPoints
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -74,4 +84,4 @@ class WBP {
 
 }
 
-return WBP::instance();
+return WoocommerceBonusPoints::instance();
