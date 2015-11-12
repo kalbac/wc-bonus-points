@@ -14,17 +14,18 @@ env:
   - WP_VERSION=4.1 WP_MULTISITE=0
   - WP_VERSION=4.1 WP_MULTISITE=1
 
-sudo: true
-
 
 matrix:
   include:
-    - php: 5.4
+    - php: 5.6
       env: WP_VERSION=master
   allow_failures:
-    - php: 5.4
+    - php: 5.6
   fast_finish: true
 
+before_install:
+	- sudo apt-get update -qq
+	- sudo apt-get install -qq [packages list]
 
 before_script:
 
