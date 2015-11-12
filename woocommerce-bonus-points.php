@@ -13,7 +13,19 @@ License: A "Slug" license name e.g. GPL2
 
 class WBP {
 
+	/**
+	 * A reference to an instance of this class.
+	 *
+	 * @var   object
+	 */
 	protected static $_instance = null;
+
+	/**
+	 * Trigger checks is woocoomerce active or not
+	 *
+	 * @var   bool
+	 */
+	protected $has_woocommerce = null;
 	/**
 	 * Main WooCommerce Bonus Points Instance
 	 * @return WBP
@@ -25,9 +37,14 @@ class WBP {
 		return self::$_instance;
 	}
 	/**
-	 * Main construct
+	 * Main constructor
 	 */
 	public function __construct() {
+
+		if ( ! $this->has_woocommerce() ) {
+			//TODO: add admin notice about need activated woocommerce plugin
+			return false;
+		}
 
 		add_filter('manage_users_columns', array( $this, 'add_user_bonus_column' ) );
 		add_action('manage_users_custom_column',  array( $this, 'show_user_bonus_column' ), 10, 3);
@@ -43,6 +60,16 @@ class WBP {
 		if ( 'user_bonus' == $column_name )
 			return sprintf('<input type="number" min="0" name="user_bonus[%d]" value="%d" placeholder="%s" >', $user_id, $user->user_bonus, __('Укажите бонусы') );
 		return $value;
+	}
+
+	public function has_woocommerce() {
+		if ( null == $this->has_woocommerce ) {
+			$this->has_woocommerce = in_array(
+				'woocommerce/woocommerce.php',
+				apply_filters( 'active_plugins', get_option( 'active_plugins' ) )
+			);
+		}
+		return $this->has_woocommerce;
 	}
 
 }
