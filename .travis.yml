@@ -23,10 +23,6 @@ matrix:
     - php: 5.6
   fast_finish: true
 
-before_install:
-	- sudo apt-get update -qq
-	- sudo apt-get install -qq [packages list]
-
 before_script:
 
   - export WP_DEVELOP_DIR=/tmp/wordpress/
