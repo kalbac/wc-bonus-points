@@ -16,6 +16,8 @@
  * @license  MIT
 */
 
+use kalbac\Updater\Plugin_Updater;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die();
@@ -56,8 +58,25 @@ final class WoocommerceBonusPoints {
 			return false;
 		}
 
+		$this->includes();
+
+		if( is_admin() ) {
+			$this->admin_includes();
+
+			if( class_exists( 'Plugin_Updater' ) )
+				new Plugin_Updater( __FILE__, 'kalbac', 'wc-bonus-points' );
+		}
+
 		add_filter('manage_users_columns', array( $this, 'add_user_bonus_column' ) );
 		add_action('manage_users_custom_column',  array( $this, 'show_user_bonus_column' ), 10, 3);
+	}
+
+	private function includes() {
+
+	}
+
+	private function admin_includes() {
+		include_once( 'updater/wp-github-plugin-updater.php' );
 	}
 
 	private function add_user_bonus_column( $columns ) {
