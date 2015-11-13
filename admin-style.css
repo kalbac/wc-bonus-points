@@ -1,0 +1,9 @@
+.fixed .column-user_bonus,
+.fixed .column-user_actions {
+    width:100px;
+    text-align: center;
+}
+
+.fixed .column-user_bonus input[type=number] {
+    width:100%;
+}
