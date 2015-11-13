@@ -4,7 +4,7 @@
  * Plugin Name: Bonus Points
  * Plugin URI: http://woodev.ru
  * Description: Adding bonus points system into customer profile.
- * Version: 1.0
+ * Version: 1.0.2
  * Author: Maksim Martirosov
  * Author URI: http://martirosoff.ru
  * Project: wc-bonus-points
@@ -58,15 +58,19 @@ final class WoocommerceBonusPoints {
 
 		$this->includes();
 
+		/*
+		 * Actions for admin panel only
+		 */
 		if( is_admin() ) {
 			$this->admin_includes();
 
 			if( class_exists( 'Plugin_Updater' ) )
 				new WBP_Plugin_Updater( __FILE__, 'kalbac', 'wc-bonus-points' );
+
+			add_filter('manage_users_columns', array( $this, 'add_user_bonus_column' ) );
+			add_action('manage_users_custom_column',  array( $this, 'show_user_bonus_column' ), 10, 3);
 		}
 
-		add_filter('manage_users_columns', array( $this, 'add_user_bonus_column' ) );
-		add_action('manage_users_custom_column',  array( $this, 'show_user_bonus_column' ), 10, 3);
 	}
 
 	private function includes() {
