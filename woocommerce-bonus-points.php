@@ -79,12 +79,12 @@ final class WoocommerceBonusPoints {
 		include_once( 'updater/wp-github-plugin-updater.php' );
 	}
 
-	private function add_user_bonus_column( $columns ) {
+	public function add_user_bonus_column( $columns ) {
 		$columns['user_bonus'] = __('Бонусы');
 		return $columns;
 	}
 
-	private function show_user_bonus_column( $value, $column_name, $user_id ) {
+	public function show_user_bonus_column( $value, $column_name, $user_id ) {
 		$user = get_userdata( $user_id );
 		if ( 'user_bonus' == $column_name )
 			return sprintf('<input type="number" min="0" name="user_bonus[%d]" value="%d" placeholder="%s" >', $user_id, $user->user_bonus, __('Укажите бонусы') );
