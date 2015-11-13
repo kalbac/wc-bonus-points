@@ -8,7 +8,6 @@
  * Project: wc-bonus-points
  */
 
-namespace kalbac\Updater;
 /*
  * Exit if called directly.
  */
@@ -16,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-class Plugin_Updater {
+class WBP_Plugin_Updater {
 
     private $slug; // plugin slug
     private $pluginData; // plugin data

@@ -16,8 +16,6 @@
  * @license  MIT
 */
 
-use kalbac\Updater\Plugin_Updater;
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die();
@@ -64,7 +62,7 @@ final class WoocommerceBonusPoints {
 			$this->admin_includes();
 
 			if( class_exists( 'Plugin_Updater' ) )
-				new Plugin_Updater( __FILE__, 'kalbac', 'wc-bonus-points' );
+				new WBP_Plugin_Updater( __FILE__, 'kalbac', 'wc-bonus-points' );
 		}
 
 		add_filter('manage_users_columns', array( $this, 'add_user_bonus_column' ) );
